@@ -16,7 +16,7 @@ public class CalculadoraXiaomiTeste {
 	public void deveSomarDoisValores() throws MalformedURLException {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 	    desiredCapabilities.setCapability("platformName", "Android");
-	    desiredCapabilities.setCapability("deviceName", "emulator-5554");
+	    desiredCapabilities.setCapability("deviceName", "1f02089a");
 	    desiredCapabilities.setCapability("automationName", "uiautomator2");
 	    desiredCapabilities.setCapability("appPackage", "com.miui.calculator");
 	    desiredCapabilities.setCapability("appActivity", "com.miui.calculator.Calculator");
@@ -24,21 +24,22 @@ public class CalculadoraXiaomiTeste {
 	    
 	    AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
 
-	    MobileElement el7 = (MobileElement) driver.findElementById("com.miui.calculator:id/btn_2_s");
-	    el7.click();
-	    MobileElement el8 = (MobileElement) driver.findElementByAccessibilityId("adição");
-	    el8.click();
-	    MobileElement el9 = (MobileElement) driver.findElementById("com.miui.calculator:id/btn_2_s");
-	    el9.click();
-	    MobileElement el10 = (MobileElement) driver.findElementByAccessibilityId("igual a");
-	    el10.click();
-	    MobileElement el11 = (MobileElement) driver.findElementById("com.miui.calculator:id/result");
-	    Assert.assertEquals("4", el11.getText());
+	    
+	    MobileElement el2 = (MobileElement) driver.findElementById("com.miui.calculator:id/btn_2_s");
+	    el2.click();
+	    MobileElement el3 = (MobileElement) driver.findElementByAccessibilityId("adição");
+	    el3.click();
+	    MobileElement el4 = (MobileElement) driver.findElementById("com.miui.calculator:id/btn_2_s");
+	    el4.click();
+	    MobileElement el5 = (MobileElement) driver.findElementByAccessibilityId("igual a");
+	    el5.click();
+	    MobileElement el6 = (MobileElement) driver.findElementById("com.miui.calculator:id/result");
+	    el6.click();
+	    Assert.assertEquals("4", el6.getText());
 	
 	    driver.quit();
 	}
 
-	  
-	  }
+}
 	
 
