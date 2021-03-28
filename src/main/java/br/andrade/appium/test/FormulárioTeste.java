@@ -2,21 +2,17 @@ package br.andrade.appium.test;
 
 import java.net.MalformedURLException;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.andrade.appium.core.DriverFactory;
+import br.andrade.appium.core.BaseTest;
 import br.andrade.appium.page.FormulárioPage;
 import br.andrade.appium.page.MenuPage;
 
 
-public class FormulárioTeste {
+public class FormulárioTeste extends BaseTest{
 
-	
-
-	
 	private MenuPage menu = new MenuPage();
 	private FormulárioPage page = new FormulárioPage();
 	
@@ -25,16 +21,9 @@ public class FormulárioTeste {
 		menu.acessarFormulário();
 	}
 	
-	@After
-	public void tearDown() {
-		DriverFactory.KillDriver();
-	}
-	
 	@Test
 	public void devePreencherCampoTexto() throws MalformedURLException {	    
 		page.escreverNome("Laércio");
-	    
-	    //checar nome escrito
 	    Assert.assertEquals("Laércio", page.obterNome());
 	}
 

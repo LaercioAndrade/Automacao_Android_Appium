@@ -1,15 +1,12 @@
 package br.andrade.appium.page;
 
+import br.andrade.appium.core.BasePage;
 
-import br.andrade.appium.core.DSL;
-public class MenuPage {
-	
-	private DSL dsl = new DSL();
+public class MenuPage extends BasePage{
+
 	
 	public void acessarFormulário() {
-		
-		
-		dsl.clicarPorTexto("Formulário");
+		clicarPorTexto("Formulário");
 	}
 
 }
