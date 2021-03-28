@@ -1,4 +1,4 @@
-package br.andrade.appium;
+package br.andrade.appium.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
