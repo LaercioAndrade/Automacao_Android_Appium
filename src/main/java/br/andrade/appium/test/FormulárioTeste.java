@@ -14,6 +14,7 @@ import br.andrade.appium.core.BaseTest;
 import br.andrade.appium.core.DriverFactory;
 import br.andrade.appium.page.FormulárioPage;
 import br.andrade.appium.page.MenuPage;
+import io.appium.java_client.MobileBy;
 
 
 public class FormulárioTeste extends BaseTest{
@@ -94,5 +95,14 @@ public class FormulárioTeste extends BaseTest{
 		page.clicarPorTexto("OK");
 		Assert.assertTrue(page.existeElementoPorTexto("20/2/2000"));
 		
+	}
+	
+	@Test
+	public void deveAlterarHora() {
+		page.clicarPorTexto("06:00");
+		page.clicar(MobileBy.AccessibilityId("10"));
+		page.clicar(MobileBy.AccessibilityId("40"));
+		page.clicarPorTexto("OK");
+		Assert.assertTrue(page.existeElementoPorTexto("10:40"));
 	}
 }
