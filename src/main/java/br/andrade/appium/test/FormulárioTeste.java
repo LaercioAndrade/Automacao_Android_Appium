@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import br.andrade.appium.core.BaseTest;
 import br.andrade.appium.core.DriverFactory;
 import br.andrade.appium.page.FormulárioPage;
-import br.andrade.appium.page.MenuPage;import io.appium.java_client.functions.ExpectedCondition;
+import br.andrade.appium.page.MenuPage;
 
 
 public class FormulárioTeste extends BaseTest{
@@ -84,8 +84,15 @@ public class FormulárioTeste extends BaseTest{
 	    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
 	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Laércio']")));
 	    Assert.assertEquals("Nome: Laércio", page.obterNomeCadastrado() );
-	   
-	    
+    
 	}
 	
+	@Test
+	public void deveAlterarData() {
+		page.clicarPorTexto("01/01/2000");
+		page.clicarPorTexto("20");
+		page.clicarPorTexto("OK");
+		Assert.assertTrue(page.existeElementoPorTexto("20/2/2000"));
+		
+	}
 }
