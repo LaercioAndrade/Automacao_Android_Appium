@@ -1,14 +1,19 @@
 package br.andrade.appium.test;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.andrade.appium.core.BaseTest;
+import br.andrade.appium.core.DriverFactory;
 import br.andrade.appium.page.FormulárioPage;
-import br.andrade.appium.page.MenuPage;
+import br.andrade.appium.page.MenuPage;import io.appium.java_client.functions.ExpectedCondition;
 
 
 public class FormulárioTeste extends BaseTest{
@@ -66,6 +71,20 @@ public class FormulárioTeste extends BaseTest{
 	    Assert.assertEquals("Console: switch", page.obterConsoleCadastro());
 	    Assert.assertTrue(page.obterCheckCadastrado().endsWith("Off"));
 	    Assert.assertTrue(page.obterSwitchCadastrado().endsWith("Marcado"));
+	    
+	}
+	
+	@Test
+	public void deveRealizarCadastroDemorado() throws MalformedURLException { 
+		page.escreverNome("Laércio");
+		
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+	    page.salvarDemorado();
+	    //esperar(3000);
+	    WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Laércio']")));
+	    Assert.assertEquals("Nome: Laércio", page.obterNomeCadastrado() );
+	   
 	    
 	}
 	
