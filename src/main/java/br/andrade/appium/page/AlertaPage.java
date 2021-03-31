@@ -10,13 +10,10 @@ public class AlertaPage extends BasePage {
 		clicarPorTexto("ALERTA CONFIRM");
 	}
 	
-	public String obterTituloAlerta() {
-		return obterTexto(By.id("android:id/alertTitle"));
+	public void clicarAlertaSimples() {
+		clicarPorTexto("ALERTA SIMPLES");
 	}
 	
-	public String obterMensagemAlerta() {
-		return obterTexto(By.id("android:id/message"));
-	}
 	
 	public void confirmar() {
 		clicarPorTexto("CONFIRMAR");
@@ -24,5 +21,9 @@ public class AlertaPage extends BasePage {
 	
 	public void sair() {
 		clicarPorTexto("SAIR");
+	}
+	
+	public void clicarForaCaixa() {
+		tap(100, 150);
 	}
 }

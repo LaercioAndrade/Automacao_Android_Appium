@@ -1,10 +1,14 @@
 package br.andrade.appium.page;
 
 
+import static br.andrade.appium.core.DriverFactory.getDriver;
+
 import org.openqa.selenium.By;
 
 import br.andrade.appium.core.BasePage;
+import br.andrade.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 
 public class FormulárioPage extends BasePage{
 	
@@ -41,6 +45,19 @@ public class FormulárioPage extends BasePage{
 	
 	public boolean isSwitchMacado() {
 		return isCheckMarcado(MobileBy.AccessibilityId("switch"));
+	}
+	
+	public void clicarSeekbar(double posicao) {
+		int delta = 50;
+		MobileElement seek = getDriver().findElement(MobileBy.AccessibilityId("slid"));
+		int y = seek.getLocation().y + (seek.getSize().height /2);
+		System.out.println(y);
+		
+		int xinicial = seek.getLocation().x + delta;
+		int x = (int) (xinicial + ((seek.getSize().width -2*delta)* posicao));
+		System.out.println(x);
+		
+		tap(x, y);
 	}
 	
 	public void salvar() {

@@ -94,6 +94,7 @@ public class FormulárioTeste extends BaseTest{
 		page.clicarPorTexto("20");
 		page.clicarPorTexto("OK");
 		Assert.assertTrue(page.existeElementoPorTexto("20/2/2000"));
+
 		
 	}
 	
@@ -104,5 +105,16 @@ public class FormulárioTeste extends BaseTest{
 		page.clicar(MobileBy.AccessibilityId("40"));
 		page.clicarPorTexto("OK");
 		Assert.assertTrue(page.existeElementoPorTexto("10:40"));
+	}
+	
+	@Test
+	public void deveInteragirComSeekbar() {
+		//clicar no seekbar
+		page.clicarSeekbar(0.67);
+		
+		//salvar
+		page.salvar();
+		
+		//obter o valr
 	}
 }
