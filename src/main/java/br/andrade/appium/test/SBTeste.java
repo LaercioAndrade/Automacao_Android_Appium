@@ -1,16 +1,21 @@
 package br.andrade.appium.test;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import br.andrade.appium.core.BaseTest;
 import br.andrade.appium.page.MenuPage;
-import br.andrade.appium.page.SBLoginPage;
+import br.andrade.appium.page.seuBarriga.SBContasPage;
+import br.andrade.appium.page.seuBarriga.SBLoginPage;
+import br.andrade.appium.page.seuBarriga.SBMenuPage;
 
 public class SBTeste extends BaseTest {
 
 	private MenuPage menu = new MenuPage();
 	private SBLoginPage login = new SBLoginPage();
+	private SBMenuPage menuSB = new SBMenuPage();
+	private SBContasPage contas = new SBContasPage();
 	
 	@Before
 	public void setup() {
@@ -21,7 +26,19 @@ public class SBTeste extends BaseTest {
 	}
 	
 	@Test
-	public void test() {
+	public void InserirConta() {
+		//Passo01: Acessar Contas
+		menuSB.acessarContas();
 		
+		//Passo02: Digitar Nome Conta
+		contas.setConta("Conta de Teste");
+		
+		
+		//Passo03: Salvar
+		contas.salvar();
+		
+		
+		//Passo04: Verificar Mensagem
+		Assert.assertTrue(contas.existeElementoPorTexto("Conta adicionada com sucesso"));
 	}
 }

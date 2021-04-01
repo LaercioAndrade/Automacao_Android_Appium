@@ -1,4 +1,4 @@
-package br.andrade.appium.page;
+package br.andrade.appium.page.seuBarriga;
 
 import org.openqa.selenium.By;
 
