@@ -9,6 +9,7 @@ import br.andrade.appium.page.MenuPage;
 import br.andrade.appium.page.seuBarriga.SBContasPage;
 import br.andrade.appium.page.seuBarriga.SBLoginPage;
 import br.andrade.appium.page.seuBarriga.SBMenuPage;
+import br.andrade.appium.page.seuBarriga.SBMovimentacaoPage;
 
 public class SBTeste extends BaseTest {
 
@@ -16,6 +17,7 @@ public class SBTeste extends BaseTest {
 	private SBLoginPage login = new SBLoginPage();
 	private SBMenuPage menuSB = new SBMenuPage();
 	private SBContasPage contas = new SBContasPage();
+	private SBMovimentacaoPage mov = new SBMovimentacaoPage();
 	
 	@Before
 	public void setup() {
@@ -55,6 +57,38 @@ public class SBTeste extends BaseTest {
 		
 		//Verificar Mensagem
 		Assert.assertTrue(contas.existeElementoPorTexto("Conta excluída com sucesso"));
+		
+	}
+	
+	@Test
+	public void IncluirMovimentacao() {
+		//Passo01: acessar tela de movimentações
+		menuSB.acessarMovimentacoes();
+		
+		//Passo02: validar descrição
+		mov.salvar();
+		Assert.assertTrue(mov.existeElementoPorTexto("Descrição é um campo obrigatório"));
+		
+		//Passo03: validar interessado
+		mov.setDescrição("Desc");
+		mov.salvar();
+		Assert.assertTrue(mov.existeElementoPorTexto("Interessado é um campo obrigatório"));
+		
+		//Passo04: validar valor
+		mov.setInteressado("interess");
+		mov.salvar();
+		Assert.assertTrue(mov.existeElementoPorTexto("Valor é um campo obrigatório"));
+		
+		//Passo05 validar conta
+		mov.setValor("500");
+		mov.salvar();
+		Assert.assertTrue(mov.existeElementoPorTexto("Conta é um campo obrigatório"));
+		
+		//Passo06: inserir com sucesso
+		mov.setConta("Conta de Teste");
+		mov.salvar();
+		Assert.assertTrue(mov.existeElementoPorTexto("Movimentação cadastrada com sucesso"));
+		
 		
 	}
 }
